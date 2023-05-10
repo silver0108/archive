@@ -37,5 +37,8 @@ MZ 세대들 사이에서 네컷 사진을 찍으러 가는 것은 국룰 !
 3. npm install
 4. npm run start
 
-## 3. 배포 링크
+## 4. 사용 기술
+![사용 기술](https://github.com/silver0108/archive/assets/78434676/8f5f876c-26db-44de-845e-9c089b641c99)
+
+## 5. 배포 링크
 [Archive 네컷 앨범](https://archive-c9af3.web.app/)
