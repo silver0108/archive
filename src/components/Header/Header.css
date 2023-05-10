@@ -1,0 +1,46 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: white;
+  background-color: rgb(80 87 134);
+  padding: 10px;
+  border-bottom: 1px solid rgb(194, 194, 194);
+}
+
+.app-name {
+  font-size: 30px;
+  margin: 0 1rem;
+}
+
+.menu ul{
+  display: flex;
+  /* justify-content: flex-end; */
+}
+
+.menu ul li{
+  list-style: none;
+  margin-right: 1rem;
+  font-size: 20px;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+  
+}
+.link:hover{
+  opacity: 0.6;
+}
+.link:hover img {
+  opacity: 0.6;
+}
+
+.clickable{
+  cursor: pointer;
+}
+
+.clickable:hover{
+  opacity: 0.6;
+}

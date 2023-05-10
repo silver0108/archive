@@ -1,0 +1,39 @@
+.archive-container{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  margin: 0 150px;
+  flex: 1;
+  height: 100%;
+}
+
+.search-bar{
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.add-file {
+  margin-bottom: 30px;
+  float: right;
+  background-color: rgb(219, 214, 255);
+
+}
+
+.file {
+  width: 100%;
+}
+
+.file img {
+  width: 100%;
+  height: auto;
+}
+
+.file h1 {
+  color: white;
+  text-align: center;
+}
+.box {
+  background-color: rgb(195, 192, 216);
+  padding-top: 177.77%;
+} 
