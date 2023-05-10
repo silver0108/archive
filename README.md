@@ -13,6 +13,12 @@ MZ 세대들 사이에서 네컷 사진을 찍으러 가는 것은 국룰 !
 웹사이트 앨범을 만들어 볼 수 있는 서비스입니다.
 
 ## 2. 기능
+![2023-05-10 18;03;16](https://github.com/silver0108/archive/assets/78434676/025f98cb-a259-42f2-8d94-2197d3997eee)
+![2023-05-10 18;04;32](https://github.com/silver0108/archive/assets/78434676/8628e7cd-c044-44c0-86ae-aff2a2ff4060)
+![2023-05-10 18;04;45](https://github.com/silver0108/archive/assets/78434676/a306284c-3426-4278-b0b8-eaa5ee678bcf)
+![2023-05-10 18;05;02](https://github.com/silver0108/archive/assets/78434676/d81e8088-61c1-4774-b189-f590ba93ec97)
+![2023-05-10 18;05;16](https://github.com/silver0108/archive/assets/78434676/dc19dbd0-3763-45a3-82c1-aa0f60b1505b)
+
 ### * 보관함
 사진을 추가하고 제목, 위치, 메모, 날짜를 입력하여 기록할 수 있습니다.
 
