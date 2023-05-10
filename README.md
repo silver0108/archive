@@ -19,6 +19,7 @@ MZ 세대들 사이에서 네컷 사진을 찍으러 가는 것은 국룰 !
 사진을 추가하고 제목, 위치, 메모, 날짜를 입력하여 기록할 수 있습니다.
 ![보관함](https://github.com/silver0108/archive/assets/78434676/8628e7cd-c044-44c0-86ae-aff2a2ff4060)
 ![생성](https://github.com/silver0108/archive/assets/78434676/a306284c-3426-4278-b0b8-eaa5ee678bcf)
+![상세](https://github.com/silver0108/archive/assets/78434676/ad31600a-7348-4600-8297-e32926268710)
 
 ### * 마이페이지
 프로필을 편집하고 사진 개수에 제한을 두어 추가적인 용량을 구매할 수 있습니다.
