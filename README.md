@@ -36,6 +36,9 @@ MZ 세대들 사이에서 네컷 사진을 찍으러 가는 것은 국룰 !
 1. git clone https://github.com/silver0108/archive.git
 2. cd archive
 3. npm install
+: 패키지 소스코드 생성을 위함
+4. .env 파일을 루트 디렉토리 아에 넣어줌
+: archive 폴더 바로 아래
 4. npm run start
 
 ## 4. 사용 기술
