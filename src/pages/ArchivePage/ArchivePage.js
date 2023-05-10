@@ -10,7 +10,7 @@ import { useEffect, useState   } from "react";
 function ArchivePage(){
   const navigate = useNavigate();
   const [files, setFiles] = useState([]);
-  // console.log(db);
+
   useEffect(()=>{
     const fetchFiles = async () => {
       const filesCollection = collection(db, "archive");
@@ -24,7 +24,6 @@ function ArchivePage(){
     fetchFiles();
   },[]);
 
-  console.log(files);
   
   
   return(

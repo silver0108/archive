@@ -1,19 +1,21 @@
 import { useRef, useState } from "react";
 import Header from "../../components/Header/Header";
 import { Button, Col, Form, Input, DatePicker } from "antd";
-import './CreatePage.css';
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useForm } from "antd/es/form/Form";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import imageCompression from "browser-image-compression";
+import moment from 'moment'
 
-function CreatePage(){
+function UpdatePage(){
+  const location = useLocation();
+  const file = location.state;
   const navigate = useNavigate();
   const [form] = useForm();
   const formRef = useRef(null);
   const fileInput = useRef(null);
-  const [mainImg, setMainImg] = useState("");
+  const [mainImg, setMainImg] = useState(file.image);
   const [isCompressing, setIsCompressing] = useState(false);
   const options = {
     maxSizeMB: 0.1  ,
@@ -60,25 +62,21 @@ function CreatePage(){
     };
   }
 
-  const onCreate = async (values) => {
-    const {title, location, memo, date} = values;
-    if(!mainImg){
-      alert('이미지를 업로드하세요.');
-      return;
-    }
-    try {
-      const docRef = await addDoc(collection(db, "archive"), {
-        title: title,
-        location: location || "",
-        memo: memo || "",
-        date: date? date.toISOString() : null,
-        image: mainImg,
-      });
-      form.resetFields();
-      setMainImg("");
-      navigate(-1);
-    }catch (e) {
-      console.error("Error adding document: ", e);
+const onUpdate = async (values) => {
+  try {
+  const {title, location, memo, date} = values
+  const fileDoc = doc(db, "archive", `${file.id}`);
+  const newFileDoc = {
+    title: title,
+    location: location || "",
+    memo: memo || "",
+    date: date ? date.toISOString() : null,
+    image: mainImg,
+  }
+  await updateDoc(fileDoc, newFileDoc);
+  navigate(`/archive`)
+  }catch(err){
+    console.log(err)
   }
 }
 
@@ -109,7 +107,7 @@ function CreatePage(){
             <Form className="form"
               form={form}
               ref={formRef}
-              onFinish={onCreate}
+              onFinish={onUpdate}
               labelCol={{
                 span: 4,
               }}
@@ -118,7 +116,11 @@ function CreatePage(){
               }}
               layout="horizontal"
               initialValues={{
-                size: "large",
+                title:`${file.title}`,
+                location: `${file.location}`,
+                memo: `${file.memo}`,
+                // date: moment(file.date, 'YYYY-MM-DD')
+                date: `${file.date}` ? moment(file.date, 'YYYY-MM-DD') : null
               }}
               size="large"
               style={{
@@ -136,20 +138,23 @@ function CreatePage(){
                 <Input />
               </Form.Item>
               <Form.Item
-                name="location">
+                name="location"
+                >
                 <Input />
               </Form.Item>
               <Form.Item
-                name="memo">
+                name="memo"
+                >
                 <Input />
               </Form.Item>
               <Form.Item 
                 name="date"
-                format="YYYY-MM-DD">
+                format="YYYY-MM-DD"
+                >
                 <DatePicker />
               </Form.Item>
               <Form.Item>
-                <Button className="register-btn" htmlType="submit">등록하기</Button>
+                <Button className="register-btn" htmlType="submit">수정하기</Button>
               </Form.Item>
             </Form>
           </div>
@@ -159,4 +164,4 @@ function CreatePage(){
   );
 }
 
-export default CreatePage;
+export default UpdatePage;
