@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import Header from "../../components/Header/Header";
 import { Button, Col, Form, Input, DatePicker } from "antd";
-import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useForm } from "antd/es/form/Form";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ import moment from 'moment'
 function UpdatePage(){
   const location = useLocation();
   const file = location.state;
+  console.log(file)
   const navigate = useNavigate();
   const [form] = useForm();
   const formRef = useRef(null);
@@ -46,6 +47,7 @@ function UpdatePage(){
       setIsCompressing(false);
     }
   }
+
   const setPreviewImg = (e) => {
     const fileSrc = e.target.files[0];
 
@@ -64,17 +66,25 @@ function UpdatePage(){
 
 const onUpdate = async (values) => {
   try {
-  const {title, location, memo, date} = values
-  const fileDoc = doc(db, "archive", `${file.id}`);
-  const newFileDoc = {
-    title: title,
-    location: location || "",
-    memo: memo || "",
-    date: date ? date.toISOString() : null,
-    image: mainImg,
-  }
-  await updateDoc(fileDoc, newFileDoc);
-  navigate(`/archive`)
+    const {title, location, memo, date} = values
+    console.log(date.toISOString())
+    const fileDoc = doc(db, "archive", `${file.id}`);
+    const newFileDoc = {
+      title: title,
+      location: location || "",
+      memo: memo || "",
+      date: date === null ? null : date.toISOString(),
+      image: mainImg,
+    }
+    await updateDoc(fileDoc, newFileDoc);
+    navigate(`/archive/${title}`, {state: {
+      title,
+      location,
+      memo,
+      date: date === null ? null : date.toISOString(),
+      image: mainImg,
+      userId: file.userId
+    }});
   }catch(err){
     console.log(err)
   }
@@ -85,7 +95,7 @@ const onUpdate = async (values) => {
       <Header/>
       <div className="create-container">
         <div className="image-upload">
-          <Col style={{width:"40%"}}>
+          <Col className="image-container">
             {mainImg ? (
               <img style={{width:"100%"}} alt="미리보기" src={mainImg}></img>
             ):(
@@ -98,12 +108,6 @@ const onUpdate = async (values) => {
         </div> 
         <div className="content-container">
           <div className="form-container">
-            <div className="label">
-              <p>제목:</p>
-              <p>위치:</p>
-              <p>메모:</p>
-              <p>날짜:</p>
-            </div>
             <Form className="form"
               form={form}
               ref={formRef}
@@ -127,32 +131,45 @@ const onUpdate = async (values) => {
                 maxWidth: 600,
               }}
             >
-              <Form.Item 
-                name="title"
-                rules={[
-                  {   
-                    required: true,
-                    message: '제목을 입력해주세요.',
-                  },
-                ]}>
-                <Input />
-              </Form.Item>
-              <Form.Item
-                name="location"
-                >
-                <Input />
-              </Form.Item>
-              <Form.Item
-                name="memo"
-                >
-                <Input />
-              </Form.Item>
-              <Form.Item 
-                name="date"
-                format="YYYY-MM-DD"
-                >
-                <DatePicker />
-              </Form.Item>
+              <div className="form-box">
+                <div className="label">제목:</div>
+                <Form.Item
+                  className="form-item"
+                  name="title"
+                  rules={[
+                    {
+                      required: true,
+                      message: '제목을 입력해주세요.',
+                    },
+                  ]}>
+                  <Input />
+                </Form.Item>
+              </div>
+              <div className="form-box">
+                <div className="label">위치:</div>
+                <Form.Item
+                  className="form-item"
+                  name="location">
+                  <Input />
+                </Form.Item>
+              </div>
+              <div className="form-box">
+                <div className="label">메모:</div>
+                <Form.Item
+                  className="form-item"
+                  name="memo">
+                  <Input />
+                </Form.Item>
+              </div>
+              <div className="form-box">
+                <div className="label">날짜:</div>
+                <Form.Item
+                  className="form-item"
+                  name="date"
+                  format="YYYY-MM-DD">
+                  <DatePicker />
+                </Form.Item>
+              </div>
               <Form.Item>
                 <Button className="register-btn" htmlType="submit">수정하기</Button>
               </Form.Item>

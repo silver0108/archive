@@ -1,7 +1,7 @@
 .mypage-container{
   display: flex;
   flex-direction: column;
-  margin: 6rem;
+  margin: 20px;
   flex: 1;
   color: white;
 }
@@ -16,12 +16,17 @@
   display: flex;
   flex-direction: column;
   border: 1px solid;
-  padding: 20px;
+  padding: 20px 30px;
+}
+
+.profile-info ul {
+  padding-left: 15px;
 }
 
 .profile-info ul li{
   margin: 10px 0 10px 0;
   font-size: 20px;
+  word-wrap: break-word;
 }
 
 .add-space{
@@ -34,10 +39,14 @@
   display: flex;
   flex-direction: column;
   border: 1px solid;
-  padding: 20px;
+  padding: 20px 30px;
 }
 .add-space-box-content{
   display: flex;
+}
+
+.add-space-box-content ul {
+  padding-left: 15px;
 }
 
 .add-space-box-content ul li{
@@ -45,14 +54,20 @@
   font-size: 20px;
 }
 .add-space-info-1{
-  flex: 1;
+  /* flex: 1; */
+  width: 100%;
 }
-.add-space-info-2{
+
+.li-box {
+  display: flex;
+  justify-content: space-between;
+}
+/* .add-space-info-2{
   flex: 2;
 }
 .add-space-info-2 ul li{
   list-style: none;
-}
+} */
 .mypage-btn{
   float: right;
   background-color: rgb(80 87 134);

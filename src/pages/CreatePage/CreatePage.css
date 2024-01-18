@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   flex: 1;
-
 }
 
 .image-upload{
@@ -10,12 +9,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin: 20px 0;
+  align-items: center;
 }
 
-.image-upload p {
-  position: absolute;
-  top: 50%;
+.image-container {
+  width: 80%;
 }
 
 .upload-btn{
@@ -28,29 +27,47 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .form-container{
   display: flex;
   justify-content: center;
-}
-.form{
-  flex: 2;
+  width: 100%;
 }
 
-.label{
+.form-box {
+  margin: 20px 0;
+}
+.label {
+  writing-mode: horizontal-tb;
   color: white;
 }
 
-.label p{
+.form{
+  width: 100%;
+  margin-right: 20px;
+}
+
+.form-item {
+  margin: 0;
+}
+
+.label{
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.label div{
   position: relative;
-  margin: 0 10px 45px 0;
+  margin: 0 10px 26px 0;
   top: 10px;
 }
 .register-btn{
-  float: right;
-  margin: 30px;
-  margin-right: 180px;
+  /* float: right; */
+  margin-top: 30px;
+  /* margin-right: 180px; */
   background-color: rgb(80 87 134);
   color: white;
 }

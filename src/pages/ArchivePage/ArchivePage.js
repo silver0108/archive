@@ -4,7 +4,7 @@ import { SearchOutlined } from '@ant-design/icons';
 import './ArchivePage.css';
 import { Link, useNavigate } from "react-router-dom";
 import { db } from "../../firebase";
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState   } from "react";
 
 function ArchivePage(){
@@ -43,7 +43,7 @@ function ArchivePage(){
             {files.map((file) => (
               <Col lg={6} md={8} sm={12} xs={24} span={6} key={file.id}>
                 {file.image ? (
-                  <Link to={`/archive/${file.id}`} state={file}>
+                  <Link to={`/archive/${file.title}`} state={file}>
                     <img src={file.image} alt={file.title}/>
                   </Link>
                 ): (

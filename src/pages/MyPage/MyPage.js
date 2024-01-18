@@ -55,17 +55,10 @@ function MyPage(){
             <div className="add-space-box-content">
               <div className="add-space-info-1">
                 <ul>
-                  <li>공간 100</li>
-                  <li>공간 200</li>
-                  <li>공간 300</li>
+                  <li><div className="li-box"><div>공간 100</div><div>5,000원</div></div></li>
+                  <li><div className="li-box"><div>공간 200</div><div>10,000원</div></div></li>
+                  <li><div className="li-box"><div>공간 300</div><div>15,000원</div></div></li>
                 </ul>
-              </div>
-              <div className="add-space-info-2">
-                <ul>
-                    <li>5,000원</li>
-                    <li>10,000원</li>
-                    <li>15,000원</li>
-                  </ul>
               </div>
             </div>
             <div className="btn-box">

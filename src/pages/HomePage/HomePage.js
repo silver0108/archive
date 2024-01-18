@@ -3,7 +3,7 @@ import Header from "../../components/Header/Header";
 import './HomePage.css';
 
 function HomePage(){
-  const src = '/images/main-image.jpg'
+  const src = '/images/main-image.svg'
 
   return(
     <div className="container">
