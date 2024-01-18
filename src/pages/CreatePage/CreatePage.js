@@ -75,7 +75,7 @@ function CreatePage(){
       return;
     }
     try {
-      const docRef = await addDoc(collection(db, "archive"), {
+      await addDoc(collection(db, "archive"), {
         userId: userId,
         title: title,
         location: location || "",

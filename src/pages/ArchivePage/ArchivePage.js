@@ -4,28 +4,39 @@ import { SearchOutlined } from '@ant-design/icons';
 import './ArchivePage.css';
 import { Link, useNavigate } from "react-router-dom";
 import { db } from "../../firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState   } from "react";
+import { getAuth } from "firebase/auth";
 
 function ArchivePage(){
   const navigate = useNavigate();
   const [files, setFiles] = useState([]);
-
-  useEffect(()=>{
+  const [userId, setUserId] = useState('');
+  
+  useEffect(() => {
     const fetchFiles = async () => {
-      const filesCollection = collection(db, "archive");
-      const filesSnapshot = await getDocs(filesCollection);
-      const filesData = filesSnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }))
-      setFiles(filesData);
-    };
-    fetchFiles();
-  },[]);
+      const auth = getAuth();
+      const uId = auth.currentUser ? auth.currentUser.uid : getAuth();
+      console.log(uId)
+      if (uId) {
+        console.log(uId);
+        setUserId(uId);
 
-  
-  
+        const filesCollection = collection(db, "archive");
+        const queryCollecion = query(filesCollection, where("userId", "==", uId));
+        const filesSnapshot = await getDocs(queryCollecion);
+        const filesData = filesSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        setFiles(filesData);
+      }
+    };
+
+    fetchFiles();
+  }, []);
+
   return(
     <div className="container">
       <Header/>
